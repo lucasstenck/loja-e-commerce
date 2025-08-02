@@ -12,7 +12,7 @@ Loja online de roupas simples e funcional.
 
 ## Como usar
 
-1. Configure o MySQL (senha: `91250401@Stenck`)
+1. Configure o MySQL (senha: `stenck`)
 2. Crie o banco: `CREATE DATABASE stylestore;`
 3. Execute: `php -S localhost:8000`
 4. Acesse: `http://localhost:8000`
