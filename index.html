@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleStore - Loja de Roupas</title>
+    <link rel="stylesheet" href="styles.css?v=1.0.1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>StyleStore</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Pesquisar produtos...">
+                        <button id="searchBtn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="user-actions">
+                        <button id="loginBtn" class="btn-secondary">Entrar</button>
+                        <button id="registerBtn" class="btn-primary">Cadastrar</button>
+                        <button id="cartBtn" class="cart-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartCount" class="cart-count">0</span>
+                        </button>
+                    </div>
+                </div>
+                <button id="menuToggle" class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <nav class="nav desktop-nav">
+                <ul>
+                    <li><a href="#" class="nav-link active" data-category="todos">Todos</a></li>
+                    <li><a href="#" class="nav-link" data-category="feminino">Feminino</a></li>
+                    <li><a href="#" class="nav-link" data-category="masculino">Masculino</a></li>
+                    <li><a href="#" class="nav-link" data-category="blusas">Blusas</a></li>
+                    <li><a href="#" class="nav-link" data-category="calcas">Calças</a></li>
+                    <li><a href="#" class="nav-link" data-category="acessorios">Acessórios</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Estilo & Qualidade</h2>
+            <p>Descubra nossa coleção exclusiva</p>
+        </div>
+    </section>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="mobile-menu-overlay">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-header">
+                <h2>Menu</h2>
+                <button id="closeMenu" class="close-menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="#" class="mobile-nav-link active" data-category="todos">Todos</a></li>
+                    <li><a href="#" class="mobile-nav-link" data-category="feminino">Feminino</a></li>
+                    <li><a href="#" class="mobile-nav-link" data-category="masculino">Masculino</a></li>
+                    <li><a href="#" class="mobile-nav-link" data-category="blusas">Blusas</a></li>
+                    <li><a href="#" class="mobile-nav-link" data-category="calcas">Calças</a></li>
+                    <li><a href="#" class="mobile-nav-link" data-category="acessorios">Acessórios</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Products Section -->
+            <section class="products-section">
+                <div class="section-header">
+                    <h3>Nossos Produtos</h3>
+                    <div class="filters">
+                        <select id="sortSelect">
+                            <option value="default">Ordenar por</option>
+                            <option value="price-low">Menor Preço</option>
+                            <option value="price-high">Maior Preço</option>
+                            <option value="name">Nome A-Z</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="productsGrid" class="products-grid">
+                    <!-- Products will be loaded here -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button id="prevPage" class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div id="pageNumbers" class="page-numbers">
+                        <!-- Page numbers will be generated here -->
+                    </div>
+                    <button id="nextPage" class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Entrar</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Senha</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Entrar</button>
+            </form>
+            <p>Não tem conta? <a href="#" id="showRegister">Cadastre-se</a></p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Cadastrar</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Nome Completo</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Senha</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerAddress">Endereço</label>
+                    <input type="text" id="registerAddress" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerCEP">CEP</label>
+                    <input type="text" id="registerCEP" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerCity">Cidade</label>
+                    <input type="text" id="registerCity" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerState">Estado</label>
+                    <input type="text" id="registerState" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPhone">Telefone</label>
+                    <input type="tel" id="registerPhone" required>
+                </div>
+                <button type="submit" class="btn-primary">Cadastrar</button>
+            </form>
+            <p>Já tem conta? <a href="#" id="showLogin">Entrar</a></p>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal">
+            <span class="close">&times;</span>
+            <h2>Carrinho de Compras</h2>
+            <div id="cartItems" class="cart-items">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div class="cart-total">
+                <h3>Total: R$ <span id="cartTotal">0,00</span></h3>
+                <div class="cart-actions">
+                    <button id="emptyCartBtn" class="btn-secondary">
+                        <i class="fas fa-trash"></i>
+                        Esvaziar Carrinho
+                    </button>
+                    <button id="checkoutBtn" class="btn-primary">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <span class="close">&times;</span>
+            <div class="success-content">
+                <i class="fas fa-check-circle"></i>
+                <h2>🎉 Compra Realizada com Sucesso!</h2>
+                <p>Obrigado por escolher a StyleStore! Seu pedido foi processado e você receberá um email de confirmação em breve.</p>
+                <div class="success-details">
+                    <div class="success-detail-item">
+                        <i class="fas fa-shipping-fast"></i>
+                        <span>Entrega em 3-5 dias úteis</span>
+                    </div>
+                    <div class="success-detail-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Compra 100% segura</span>
+                    </div>
+                    <div class="success-detail-item">
+                        <i class="fas fa-headset"></i>
+                        <span>Suporte 24/7</span>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="closeSuccessModal()">
+                    <span>Continuar Comprando</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

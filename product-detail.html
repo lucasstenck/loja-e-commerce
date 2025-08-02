@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto - StyleStore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html" style="color: #00ff88; text-decoration: none;">StyleStore</a></h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Voltar à Loja</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="cartBtn" class="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cartCount" class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div id="productDetail" class="product-detail">
+                <!-- Product details will be loaded here -->
+            </div>
+            
+                    <!-- Produtos Relacionados -->
+        <div class="related-products-section">
+            <div class="related-header">
+                <h3>Produtos relacionados</h3>
+            </div>
+            <div class="related-products-container">
+                <button class="scroll-btn scroll-left" onclick="scrollRelatedProducts('left')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="related-products-carousel" id="relatedProductsCarousel">
+                    <!-- Produtos relacionados serão carregados aqui -->
+                </div>
+                <button class="scroll-btn scroll-right" onclick="scrollRelatedProducts('right')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="carousel-indicators" id="carouselIndicators">
+                <!-- Indicadores serão criados dinamicamente -->
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <!-- Image Gallery Modal -->
+    <div id="imageModal" class="modal image-modal">
+        <div class="modal-content image-modal-content">
+            <span class="close">&times;</span>
+            <div class="image-gallery-modal">
+                <div class="main-image-container">
+                    <img id="modalMainImage" src="" alt="Produto" class="modal-main-image">
+                    <div class="image-zoom-controls">
+                        <button class="zoom-btn" onclick="zoomIn()"><i class="fas fa-search-plus"></i></button>
+                        <button class="zoom-btn" onclick="zoomOut()"><i class="fas fa-search-minus"></i></button>
+                        <button class="zoom-btn" onclick="resetZoom()"><i class="fas fa-undo"></i></button>
+                    </div>
+                </div>
+                <div id="modalThumbnails" class="modal-thumbnails">
+                    <!-- Thumbnails will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal">
+            <span class="close">&times;</span>
+            <h2>Carrinho de Compras</h2>
+            <div id="cartItems" class="cart-items">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div class="cart-total">
+                <h3>Total: R$ <span id="cartTotal">0,00</span></h3>
+                <button id="checkoutBtn" class="btn-primary">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <span class="close">&times;</span>
+            <div class="success-content">
+                <i class="fas fa-check-circle"></i>
+                <h2>Compra Realizada com Sucesso!</h2>
+                <p>Obrigado por escolher a StyleStore!</p>
+                <button class="btn-primary" onclick="closeSuccessModal()">Continuar Comprando</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="product-detail.js"></script>
+</body>
+</html> 
